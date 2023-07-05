@@ -2,9 +2,9 @@ CREATE TABLE projects (
     -- id INT PRIMARY KEY AUTO_INCREMENT,
     id SERIAL PRIMARY KEY,
     project_name VARCHAR(250) NOT NULL,
-    deadline DATE,
-    employees
-) CREATE TABLE buildings (
+    deadline DATE
+);
+CREATE TABLE buildings (
     -- id INT PRIMARY KEY AUTO_INCREMENT,
     id SERIAL PRIMARY KEY,
     building_name VARCHAR(250) NOT NULL
@@ -34,10 +34,11 @@ CREATE TABLE intranet_accounts (
     -- this is a relation without using the primary key
     email VARCHAR(250) REFERENCES employees (email) ON DELETE CASCADE,
     password VARCHAR(250) NOT NULL
-) -- Intermediate tables for many to many
+);
+-- Intermediate tables for many to many
 CREATE TABLE projects_employees (
     id SERIAL PRIMARY KEY,
     employee_id INT REFERENCES employees (id) ON DELETE CASCADE,
     -- whenever a project is deleted, also remove entries from this intermediate table
-    project_id INT REFERENCES projects (id) ON DELETE CASCADE,
+    project_id INT REFERENCES projects (id) ON DELETE CASCADE
 )
