@@ -41,4 +41,9 @@ CREATE TABLE projects_employees (
     employee_id INT REFERENCES employees (id) ON DELETE CASCADE,
     -- whenever a project is deleted, also remove entries from this intermediate table
     project_id INT REFERENCES projects (id) ON DELETE CASCADE
+) CREATE TABLE projects_employees (
+    employee_id INT REFERENCES employees (id) ON DELETE CASCADE,
+    -- whenever a project is deleted, also remove entries from this intermediate table
+    project_id INT REFERENCES projects (id) ON DELETE CASCADE,
+    PRIMARY KEY (employee_id, project_id)
 )
